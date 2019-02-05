@@ -1,0 +1,53 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="Celfic a social networking website for users to share thier photos with other people and challenge thier friends to take photos">
+    <meta name="author" content="shahmir alam">
+
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+    <title>Reviews</title>
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu|Titillium+Web" rel="stylesheet">
+
+
+    
+
+    {% block styles %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+     <nav class="navbar navbar-expand-md header-color ">
+  <a class="navbar-brand greyish head-look" href="{% url 'login' %}">Reviews</a>
+   <a class="navbar-brand greyish" href="{% url 'login' %}">Login</a>
+   
+   
+</nav>
+   {% block content %}
+    
+
+
+
+    {% endblock %}
+
+{% load staticfiles %}
+
+
+
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>    
