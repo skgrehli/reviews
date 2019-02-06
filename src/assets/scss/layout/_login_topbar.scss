@@ -5,5 +5,9 @@
 .navbar {
   &--login-topbar {
     font-size: $font-size-sm;
+
+    a {
+      color: $text-color !important;
+    }
   }
 }

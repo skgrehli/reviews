@@ -1,0 +1,17 @@
+// ---------------------------------------------------------------------------------
+// This file contains all styles related to the login navbar-main of the site/application.
+// ---------------------------------------------------------------------------------
+
+.navbar {
+  &--main {
+    background-color: $brand-color !important;
+    font-size: $font-size-sm;
+    height: 100px;
+    margin-top: 53px;
+
+    a {
+      color: $white !important;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
