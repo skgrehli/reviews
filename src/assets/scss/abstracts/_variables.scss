@@ -106,3 +106,13 @@ $secondary: $dark-grey !default;
 // $link-decoration:                         none !default;
 // $link-hover-color:                        darken($link-color, 15%) !default;
 // $link-hover-decoration:                   underline !default;
+// $grid-breakpoints: map-merge(
+//   (
+//     xs: 0,
+//     sm: 576px,
+//     md: 768px,
+//     lg: 992px,
+//     xl: 1200px
+//   ),
+//   $grid-breakpoints
+// );

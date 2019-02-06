@@ -21,7 +21,7 @@ gulp.task('scripts', function() {
       './src/assets/js/**/*.js' // our js files
     ])
     .pipe(concat('main.js')) // cancatenation to file myproject.js
-    .pipe(uglify()) // uglifying this file
+    // .pipe(uglify()) // uglifying this file
     .pipe(rename({ suffix: '.min' })) // renaming file to myproject.min.js
     .pipe(gulp.dest('./src/static_in_env/js')); // save file to destination directory
 });
@@ -34,7 +34,7 @@ gulp.task('sass', function() {
     .pipe(concat('style.min.css'))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS())
+    // .pipe(cleanCSS())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./src/static_in_env/css'));
 });

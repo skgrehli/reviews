@@ -6,12 +6,21 @@
   &--main {
     background-color: $brand-color !important;
     font-size: $font-size-sm;
-    height: 100px;
+    height: 84px;
     margin-top: 53px;
 
     a {
       color: $white !important;
       font-weight: $font-weight-bold;
+    }
+
+    ul.dropdown-menu li a {
+      font-size: $font-size-sm;
+      color: $text-color !important;
+    }
+
+    .dropdown-toggle::after {
+      display: none;
     }
   }
 }
