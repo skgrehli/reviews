@@ -91,3 +91,4 @@ node_modules/
 /static_root/
 /src/assets/ScatteredPolaroidsGallery-master.zip
 /src/static/
+/src/static_in_env/
