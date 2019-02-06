@@ -1,0 +1,9 @@
+// ---------------------------------------------------------------------------------
+// This file contains all styles related to the login topbar of the site/application.
+// ---------------------------------------------------------------------------------
+
+.navbar {
+  &--login-topbar {
+    font-size: $font-size-sm;
+  }
+}

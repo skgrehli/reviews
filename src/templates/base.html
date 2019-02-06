@@ -11,7 +11,7 @@
     <meta name="description"
           content="Celfic a social networking website for users to share thier photos with other people and challenge thier friends to take photos">
     <meta name="author" content="shahmir alam">
-    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+
 
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
@@ -20,35 +20,37 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu|Titillium+Web" rel="stylesheet">
 
-
-
-
     {% block styles %}
-    {% endblock %}
+        <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    {% endblock styles %}
 
 </head>
 
 <body>
+    {% comment %} LOGIN-TOPBAR {% endcomment %}
+    <nav class="navbar navbar-expand-md fixed-top navbar--login-topbar">
+        <div class="container">
+        {% if user.is_authenticated %}
+            <span>Hi {{ user.username }}!</span>
+            <a href="{% url 'logout' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> logout</a>
+        {% else %}
 
-     <nav class="navbar navbar-expand-md header-color ">
-  <a class="navbar-brand greyish head-look" href="{% url 'login' %}">Reviews</a>
-   <a class="navbar-brand greyish" href="{% url 'login' %}">Login</a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i> Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+                </ul>
+
+        {% endif %}
+        </div>
+    </nav>
 
 
-</nav>
-   {% block content %}
 
-
-
-
-    {% endblock %}
-
-{% load staticfiles %}
-
-
+    {% block content %}
+    {% endblock content %}
 
 {% block scripts %}
-{% endblock %}
+{% endblock scripts %}
 
 </body>
 </html>
