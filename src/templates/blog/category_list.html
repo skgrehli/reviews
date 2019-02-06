@@ -1,0 +1,23 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+
+<h1>All Categories</h1>
+<ul>
+    {% for category in categories %}
+    <li>{{ category.name }}</li>
+    <ul>{% for obj in subcategories %}
+        {% if obj.category.name == category.name %}
+        <li>{{ obj.subcategory.name }}</li>
+        {% endif %}
+        {% empty %}
+        <li>no item</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</ul>
+
+{% endblock %}
