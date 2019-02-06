@@ -33,3 +33,17 @@ def get_categories(request):
     print(subcategories)
     return render(request,'blog/category_list.html',{'categories':categories,'subcategories':subcategories})
     # return render(request,'main/popularpeople.html',{'popularity':popularity})    
+
+
+
+def IndexPageView(request):
+    categories = []
+    subcategories = []
+    for category in Category.objects.all():
+        categories.append(category)
+        for subcategory in SubCategory.objects.filter(category=category):
+            subcategories.append({'category':category,'subcategory':subcategory})
+    
+    reviews = Review.objects.all()
+    return render(request,'home.html',{'categories':categories,'subcategories':subcategories,'reviews':reviews})
+    # return render(request,'main/popularpeople.html',{'popularity':popularity})    

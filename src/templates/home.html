@@ -4,4 +4,29 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
+<h1>Home</h1>
+
+<h3>Categories</h3>
+<p>Choose category to start browsing products and services</p>
+<ul>
+    {% for category in categories %}
+    <li>{{ category.name }}</li>
+    <ul>{% for obj in subcategories %}
+        {% if obj.category.name == category.name %}
+        <li>{{ obj.subcategory.name }}</li>
+        {% endif %}
+        {% empty %}
+        <li>no item</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</ul>
+
+
+<h3>Latest Reviews</h3>
+<p>Our authors have released some new reviews</p>
+{% for r in reviews %}
+<a href="blog/{{r.slug}}">{{ r.title }}</a>
+{% endfor %}
 {% endblock %}
