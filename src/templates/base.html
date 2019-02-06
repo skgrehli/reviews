@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 {% load i18n %}
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@
     <meta name="description"
           content="Celfic a social networking website for users to share thier photos with other people and challenge thier friends to take photos">
     <meta name="author" content="shahmir alam">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
 
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
@@ -20,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu|Titillium+Web" rel="stylesheet">
 
 
-    
+
 
     {% block styles %}
     {% endblock %}
@@ -32,11 +33,11 @@
      <nav class="navbar navbar-expand-md header-color ">
   <a class="navbar-brand greyish head-look" href="{% url 'login' %}">Reviews</a>
    <a class="navbar-brand greyish" href="{% url 'login' %}">Login</a>
-   
-   
+
+
 </nav>
    {% block content %}
-    
+
 
 
 
@@ -50,4 +51,4 @@
 {% endblock %}
 
 </body>
-</html>    
+</html>
