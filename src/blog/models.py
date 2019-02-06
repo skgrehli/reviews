@@ -15,7 +15,7 @@ class SubCategory(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,default=None)
 
     def __str__(self):
-        return self.name
+        return self.name+' - '+self.category.name
 
 
 class Product(models.Model):
@@ -37,9 +37,9 @@ class Review(models.Model):
 	product = models.ForeignKey(Product,on_delete=models.CASCADE,default=None)
 	author = models.ForeignKey(User,on_delete=models.CASCADE,default=None)
 		
-	def __str__(self):
+	def __str__(self,arg):
 		return self.title	
 
 		#function to return post text only 50 characters
-	def snippet(self):
+	def snippet(self,arg):
 		return self.body[:50]+'...'	
