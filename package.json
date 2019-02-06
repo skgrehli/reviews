@@ -16,7 +16,7 @@
   "homepage": "https://bitbucket.org/djshara/reviews_fiverr#readme",
   "devDependencies": {
     "autoprefixer": "^9.4.7",
-    "browsersync": "0.0.1-security",
+    "browser-sync": "^2.26.3",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
