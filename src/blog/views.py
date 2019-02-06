@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.utils import timezone
-from blog.models import Category,SubCategory
+from blog.models import Category,SubCategory,Review
 
-class CategoryListView(ListView):
+class ReviewListView(ListView):
 
-    model = Category
+    model = Review
     paginate_by = 100  # if pagination is desired
 
     def get_context_data(self, **kwargs):
@@ -13,6 +14,14 @@ class CategoryListView(ListView):
         context['now'] = timezone.now()
         return context
 
+class ReviewDetailView(DetailView):
+
+    model = Review
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
 
 def get_categories(request):
     categories = []

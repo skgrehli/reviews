@@ -1,0 +1,16 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+
+<h1>Reviews</h1>
+
+<h1>{{ object.title }}</h1>
+<p>{{ object.body }}</p>
+<p>author: {{ object.author }}</p>
+<p>Published: {{ object.date|date }}</p>
+<p>Date: {{ now|date }}</p>
+
+{% endblock %}
