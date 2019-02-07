@@ -10024,6 +10024,9 @@ body {
 .navbar--login-topbar a {
   color: #676767 !important; }
 
+.navbar-nav--row {
+  flex-direction: row; }
+
 .navbar--main {
   background-color: #2980b9 !important;
   font-size: 0.77rem;
@@ -10038,7 +10041,11 @@ body {
   font-size: 0.77rem;
   color: #676767 !important; }
 
-.navbar--main .dropdown-toggle::after {
+.navbar-dark .navbar-toggler {
+  border: 3px solid white;
+  color: white; }
+
+.dropdown-toggle::after {
   display: none; }
 
 .btn-success {
