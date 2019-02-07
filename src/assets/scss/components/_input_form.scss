@@ -6,19 +6,19 @@
 // }
 
 .form-control--white-border {
-  //   border-color: $white;
   background-color: transparent;
   border: 3px solid #fff !important;
-  display: block;
+  // display: block;
   padding-bottom: 4px;
   padding-top: 4px;
-  min-width: 100%;
+  flex: 1;
 
   &:focus {
     background-color: transparent;
   }
 }
 
-.form-group__search {
-  flex: 1 0 auto;
+.form-input__search {
+  min-width: 220px;
+  flex: 1;
 }

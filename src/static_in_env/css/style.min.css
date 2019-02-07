@@ -10050,19 +10050,35 @@ body {
 .form-control--white-border {
   background-color: transparent;
   border: 3px solid #fff !important;
-  display: block;
   padding-bottom: 4px;
   padding-top: 4px;
-  min-width: 100%; }
+  flex: 1; }
 
 .form-control--white-border:focus {
   background-color: transparent; }
 
-.form-group__search {
-  flex: 1 0 auto; }
+.form-input__search {
+  min-width: 220px;
+  flex: 1; }
 
 .hero {
   background-color: #000;
-  height: 500px; }
+  height: 500px;
+  display: flex; }
+
+.hero__centered-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column; }
+
+.hero__headlines-group {
+  color: white;
+  flex: 1; }
+
+.hero__headlines-group h1 {
+  font-size: 2rem; }
+
+.hero__headlines-group h4 {
+  font-size: 1rem; }
 
 /*# sourceMappingURL=style.min.css.map */
