@@ -57,9 +57,8 @@ $text-color: $dark-grey !default;
 // This section contains Bootstrap variables.
 // -----------------------------------------------------------------------------
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
-// $font-size-lg:                ($font-size-base * 1.25) !default;
-$font-size-sm: ($font-size-base * 0.875) !default;
-
+// $font-size-lg: ($font-size-base * 1.25) !default;
+$font-size-sm: ($font-size-base * 0.77) !default;
 $input-btn-font-size: $font-size-sm;
 
 // $blue: #007bff !default;
@@ -106,6 +105,11 @@ $success: rgb(154, 204, 85) !default;
 $border-radius: 0;
 $border-radius-: 0;
 $border-radius-sm: 0;
+
+$input-border-color: $white;
+$input-border-width: 10;
+
+$input-box-shadow: 0;
 
 // $btn-border-radius: $border-radius !default;
 // $btn-border-radius-lg: $border-radius-lg !default;
