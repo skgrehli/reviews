@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the input form component.
+// -----------------------------------------------------------------------------
+// .search-form-container {
+//   margin-top: 5rem !important;
+// }
+
+.form-control--white-border {
+  background-color: transparent;
+  border: 3px solid #fff !important;
+  // display: block;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  flex: 1;
+
+  &:focus {
+    background-color: transparent;
+  }
+}
+
+.form-input__search {
+  min-width: 220px;
+  flex: 1;
+}

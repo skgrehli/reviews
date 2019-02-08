@@ -18,9 +18,14 @@
       font-size: $font-size-sm;
       color: $text-color !important;
     }
-
-    .dropdown-toggle::after {
-      display: none;
-    }
   }
+}
+
+.navbar-dark .navbar-toggler {
+  border: 3px solid $white;
+  color: rgba(255, 255, 255, 1);
+}
+
+.dropdown-toggle::after {
+  display: none;
 }

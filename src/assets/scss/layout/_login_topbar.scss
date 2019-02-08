@@ -10,4 +10,8 @@
       color: $text-color !important;
     }
   }
+
+  &-nav--row {
+    flex-direction: row;
+  }
 }
