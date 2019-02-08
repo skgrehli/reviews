@@ -1,5 +1,6 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
+{% load embed_video_tags %}
 
 {% block title %}Reviews{% endblock %}
 
@@ -8,9 +9,50 @@
 <h1>Reviews</h1>
 
 <h1>{{ object.title }}</h1>
+<img src="{{ object.product.thumb.url }}">
 <p>{{ object.body }}</p>
 <p>author: {{ object.author }}</p>
 <p>Published: {{ object.date|date }}</p>
 <p>Date: {{ now|date }}</p>
+
+<p>{% for p in object.rpros.all %}
+    {{p}}
+    {% endfor %}
+</p>
+
+comfort <div class="progress" style="height:25px">
+        <div class="progress-bar" style="width:{{ object.comfort }}%;height:25px">{{ object.comfort }}%</div>
+      </div>
+
+Price <div class="progress" style="height:25px">
+            <div class="progress-bar" style="width:{{ object.price }}%;height:25px">{{ object.price }}%</div>
+          </div>  
+availability <div class="progress" style="height:25px">
+                <div class="progress-bar" style="width:{{ object.availability }}%;height:25px">{{ object.availability }}%</div>
+              </div>              
+support <div class="progress" style="height:25px">
+                    <div class="progress-bar" style="width:{{ object.support }}%;height:25px">{{ object.support }}%</div>
+                  </div>
+{% video object.video_url as my_video %}
+  <!-- URL: {{ my_video.url }}
+  Thumbnail: {{ my_video.thumbnail }}
+  Backend: {{ my_video.backend }} -->
+
+  {% video my_video '400x400' %}
+{% endvideo %}
+
+<h1>User Reviews</h1>
+{% for r in user_reviews %}
+<p>@{{ r.name }}-{{ r.email }}</p>
+<p>{{ r.date }}</p>
+<p>{{ r.comment }}</p>
+<hr>
+{% endfor %}
+<hr>
+<h1>Leave Review</h1>
+<form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Send message">
+    </form>
 
 {% endblock %}

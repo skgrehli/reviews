@@ -27,6 +27,19 @@
 <h3>Latest Reviews</h3>
 <p>Our authors have released some new reviews</p>
 {% for r in reviews %}
-<a href="blog/{{r.slug}}">{{ r.title }}</a>
+<a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}</a>
 {% endfor %}
+
+<h3>Most Reviewed</h3>
+<p>Most Reviewed by users</p>
+{% for r in reviews_by_views %}
+<a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}</a>
+{% endfor %}
+
+<h3>Author's Picks</h3>
+<p>These products and services are top rated by our authors</p>
+{% for r in reviews_by_rating %}
+<a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}</a>
+{% endfor %}
+
 {% endblock %}

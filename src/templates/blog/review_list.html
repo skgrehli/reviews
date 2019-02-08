@@ -10,7 +10,7 @@
 <ul>
 {% for review in object_list %}
     <li>
-        <img src="{{ review.product.thumb }}">
+        <img src="{{ review.product.thumb.url }}">
         <a href="{{ review.slug }}">{{ review.title }}</a>
         <p>{{ review.body }}</p>
           <p>Written by {{ review.author }}--{{ review.date }}-{{ review.product.name }}</li>

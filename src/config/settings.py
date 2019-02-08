@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'blog',
+    #for youtube videos
+    'embed_video',
 ]
 
 MIDDLEWARE = [
@@ -117,4 +119,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 VENV_PATH = os.path.dirname(BASE_DIR)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(VENV_PATH, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

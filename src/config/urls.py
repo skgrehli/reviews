@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from accounts import urls
+from django.conf import settings
+from django.conf.urls.static import static
 from blog import urls
 import blog.views
 urlpatterns = [
@@ -12,6 +14,14 @@ urlpatterns = [
     path('blog/',include('blog.urls')),
     path('', blog.views.IndexPageView, name='home'),
 ]
+
+# urlpatterns += i18n_patterns()
+
+# urlpatterns += staticfiles_urlpatterns() 
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+# urlpatterns += format_suffix_patterns(urlpatterns)
 
 # accounts/login/ [name='login']
 # accounts/logout/ [name='logout']
