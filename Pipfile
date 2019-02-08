@@ -11,6 +11,7 @@ autopep8 = "*"
 pylint = "*"
 django = "*"
 pillow = "*"
+django-embed-video = "*"
 
 [requires]
 python_version = "3.7"
