@@ -12,6 +12,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('blog/',include('blog.urls')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('', blog.views.IndexPageView, name='home'),
 ]
 

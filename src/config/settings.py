@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     'blog',
     #for youtube videos
     'embed_video',
+    #for ratings
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 VENV_PATH = os.path.dirname(BASE_DIR)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+STAR_RATINGS_STAR_HEIGHT = 20
+STAR_RATINGS_STAR_WIDTH = 20

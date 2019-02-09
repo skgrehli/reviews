@@ -1,7 +1,11 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
 {% load embed_video_tags %}
+{% load ratings %}
 
+
+
+</html>
 {% block title %}Reviews{% endblock %}
 
 {% block content %}
@@ -12,6 +16,7 @@
 <img src="{{ object.product.thumb.url }}">
 <p>{{ object.body }}</p>
 <p>author: {{ object.author }}</p>
+<p>{% ratings object %}</p>
 <p>Published: {{ object.date|date }}</p>
 <p>Date: {{ now|date }}</p>
 

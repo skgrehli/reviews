@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 from embed_video.fields import EmbedVideoField
 from django.core.validators import MaxValueValidator, MinValueValidator
+from star_ratings.models import Rating
 
 # Create your models here.
 
@@ -63,7 +64,7 @@ class Review(models.Model):
 	availability=models.IntegerField(default=1,validators=[MaxValueValidator(100), MinValueValidator(1)],null=True )
 	support=models.IntegerField(default=1,validators=[MaxValueValidator(100), MinValueValidator(1)],null=True)
 	views = models.IntegerField(default=0)
-	rating = models.IntegerField(default=0,validators=[MaxValueValidator(5), MinValueValidator(1)],null=True)
+	rating = models.ForeignKey(Rating,on_delete=models.CASCADE,default=0,null=True)
 
 
     
