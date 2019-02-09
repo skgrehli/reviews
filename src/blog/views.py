@@ -57,7 +57,34 @@ def IndexPageView(request):
     reviews_by_views = Review.objects.all().order_by('-views')
     reviews_by_rating = Review.objects.all().order_by('-rating')
     return render(request,'home.html',{'categories':categories,'subcategories':subcategories,'reviews':reviews,'reviews_by_views':reviews_by_views,'reviews_by_rating':reviews_by_rating})
-        
+
+def search(request):
+    if request.method == 'POST':
+        reviews = []
+        selected_category = request.POST.get('selected_category',None)
+        sortby = request.POST.get('sortby',None)
+        keyword = request.POST.get('keyword',None)
+        print("keyword:"+keyword)
+        if selected_category == "all"  and not keyword:
+            reviews = Review.objects.all().order_by(sortby)
+        elif keyword :
+            reviews = Review.objects.filter(title__contains=keyword).order_by(sortby)
+            print("run")
+        else:
+            for review in Review.objects.all().order_by(sortby):
+                print(review.product.subcategory.category)
+                if review.product.subcategory.category.name == selected_category:
+                    print('category matched')
+                    reviews.append(review)
+                else:
+                    print('not matched any category')    
+
+        print(selected_category)
+    else:
+        reviews = Review.objects.all().order_by('-date')
+    categories = Category.objects.all()
+    return render(request,'search.html',{'reviews':reviews,'categories':categories})        
+
 
 class CreateUserReview(FormView):
     #template_name = 'contact.html'

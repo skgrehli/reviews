@@ -1,0 +1,38 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load ratings %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h1>Search</h1>
+<form method="post" action="{% url "search" %}">
+{% csrf_token %}
+<label>Filter by Keyword</label>
+<input type="text" placeholder="Type term and hit enter" name="keyword"/>
+<label>Filter by Category</label>
+<select name="selected_category">
+    <option value="all">All Categories</option>
+    {% for c in categories %}
+    <option value="{{ c.name }}">{{ c.name }}</option>
+    {% endfor %}
+</select>
+<label>Sort Reviews</label>
+<select name="sortby">
+    <option value="-date">Latest</option>
+    <option value="date">Oldest</option>
+    <option value="-rating">Top Rated by Author</option>
+    <option value="-date">Top Rated by User</option>
+    <option value="-views">Most Viewed</option>
+</select>
+<input type="submit" value="Search">
+</form>
+<h3>Latest Reviews</h3>
+<p>Our authors have released some new reviews</p>
+{% for r in reviews %}
+<a href="/blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
+{% endfor %}
+
+
+
+{% endblock %}
