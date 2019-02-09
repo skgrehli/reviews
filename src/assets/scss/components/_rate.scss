@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the rate component.
+// -----------------------------------------------------------------------------
+.rate {
+  font-size: $font-size-sm;
+  &__star {
+    &--fill {
+      color: $star-color;
+    }
+    &--empty {
+      color: $text-color;
+    }
+  }
+}

@@ -15,7 +15,8 @@
   'layout/navbar_main';
 
 // 5. Components
-@import 'components/button', 'components/input_form';
+@import 'components/button', 'components/rate', 'components/input_form',
+  'components/category_card';
 
 // 6. Page-specific styles
 @import 'pages/home';
