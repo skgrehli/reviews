@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.utils import timezone
 from blog.models import Category,SubCategory,Review,UserReview
 from .forms import userReviewForm
+from django.views.generic.edit import FormView
 class ReviewListView(ListView):
 
     model = Review
@@ -21,9 +22,10 @@ class ReviewDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
-        key=context['object'].id
+        key=context['object'].pk
         context['user_reviews'] = UserReview.objects.filter(review=key)
         context['form'] = userReviewForm()
+        context['key']= key
         # print()
         return context
 
@@ -56,3 +58,15 @@ def IndexPageView(request):
     reviews_by_rating = Review.objects.all().order_by('-rating')
     return render(request,'home.html',{'categories':categories,'subcategories':subcategories,'reviews':reviews,'reviews_by_views':reviews_by_views,'reviews_by_rating':reviews_by_rating})
         
+
+class CreateUserReview(FormView):
+    #template_name = 'contact.html'
+    form_class = userReviewForm
+    success_url = '/blog/'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.save()
+        print("submitted")
+        return super().form_valid(form)
