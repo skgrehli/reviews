@@ -10054,6 +10054,15 @@ body {
 .btn-success:hover {
   color: white; }
 
+.rate {
+  font-size: 0.77rem; }
+
+.rate__star--fill {
+  color: #ec982b; }
+
+.rate__star--empty {
+  color: #676767; }
+
 .form-control--white-border {
   background-color: transparent;
   border: 3px solid #fff !important;
