@@ -1,0 +1,55 @@
+.review-card {
+  color: $text-color;
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  &__author-img {
+    border-radius: 50%;
+  }
+
+  &__img-thumbnail {
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 180px;
+    margin-bottom: 10px;
+
+    @include media-breakpoint-up(sm) {
+      min-height: 240px;
+    }
+
+    @include media-breakpoint-up(md) {
+      min-height: 180px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      min-height: 200px;
+    }
+  }
+
+  &__stars-user__label {
+    text-align: right;
+    font-size: $font-size-sm;
+    padding-bottom: -10px;
+    padding-right: 21px;
+  }
+
+  &__stars-user div {
+    border-color: blue;
+    transform: scale(0.8);
+    float: right;
+    padding-top: 0;
+    line-height: 0;
+  }
+}
+
+.card-body {
+  font-size: $font-size-sm;
+  padding: 0.7rem;
+
+  h5 {
+    margin-left: 0;
+  }
+}

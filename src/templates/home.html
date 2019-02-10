@@ -1,5 +1,6 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
+{% load static %}
 {% load ratings %}
 {% block title %}Home{% endblock %}
 
@@ -26,9 +27,31 @@
 
 <h3>Latest Reviews</h3>
 <p>Our authors have released some new reviews</p>
-{% for r in reviews %}
+{% comment %} {% for r in reviews %}
 <a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
-{% endfor %}
+{% endfor %} {% endcomment %}
+
+<div class="container">
+    <div class="row category-list">
+        {% for r in reviews %}
+            <div class="col-md-4">
+                <div class="card review-card">
+                    <img src="{{r.product.thumb.url}}" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
+                    <span class="review-card__stars-user__label text-right">USERS RATE</span>
+                    <span class="review-card__stars-user">{% ratings r %}</span>
+                    <div class="card-body">
+                            <a href="#" title="{{ r.title }}" class="leading-category">
+                                <h5 class="category-card__title">{{ r.title|title }}</h5>
+                            </a>
+                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime odit qui quibusdam deserunt rem recusandae ducimus alias dolorem excepturi libero illo quaerat totam quos aut distinctio, ullam perspiciatis est consequuntur molestiae hic optio. Doloribus odit totam esse maiores adipisci odio.</p>
+                            <span><img class="review-card__author-img" src="{% static 'img/sally-doe-25x25.jpg' %}">&nbsp;&nbsp;By Sally Doe</span><span class="pull-right">{{r.product.subcategory.name}}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
 
 <h3>Most Reviewed</h3>
 <p>Most Reviewed by users</p>
