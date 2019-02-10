@@ -10018,6 +10018,17 @@ body {
   position: absolute;
   width: 1px; }
 
+.footer {
+  color: white;
+  background-color: #1b1b1b;
+  height: 65px; }
+
+.footer a {
+  color: white; }
+
+.footer__social-media-icons a {
+  padding-left: 10px; }
+
 .navbar--login-topbar {
   font-size: 0.77rem; }
 
