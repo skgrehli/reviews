@@ -29,7 +29,7 @@
 
 <body>
     {% comment %} LOGIN-TOPBAR {% endcomment %}
-    <nav class="navbar navbar-expand-md fixed-top navbar--login-topbar">
+    <nav class="navbar navbar-expand-md navbar--login-topbar">
         <div class="container">
         {% if user.is_authenticated %}
             <span>Hi {{ user.username }}!</span>
@@ -189,7 +189,7 @@
 {% block scripts %}
 <script src="{% static 'js/main.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-    
+
 {% endblock scripts %}
 
 </body>
