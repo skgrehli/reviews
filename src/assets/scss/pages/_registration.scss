@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the registration page.
+// -----------------------------------------------------------------------------
+
+.myinput
+{
+    background-color:$light-grey !important;
+    border: none;
+    height: 35px;
+}
+.search-form
+{
+    height: 200px;
+}
+.search-box
+{
+   
+    padding: 10px;
+    float: left;
+    
+}
+
+.one-review
+{
+    margin-bottom: 40px;
+    background-color: #f5f5f5;
+}
+.post-content
+{
+    padding: 15px;
+}
+.post-content a 
+{
+    color: black;
+}
+
+.post-content a:hover 
+{
+    color: #9acc55;
+    text-decoration: none;
+    
+}

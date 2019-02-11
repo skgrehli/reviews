@@ -10140,4 +10140,30 @@ body {
 .hero__headlines-group h4 {
   font-size: 1rem; }
 
+.myinput {
+  background-color: #ededed !important;
+  border: none;
+  height: 35px; }
+
+.search-form {
+  height: 200px; }
+
+.search-box {
+  padding: 10px;
+  float: left; }
+
+.one-review {
+  margin-bottom: 40px;
+  background-color: #f5f5f5; }
+
+.post-content {
+  padding: 15px; }
+
+.post-content a {
+  color: black; }
+
+.post-content a:hover {
+  color: #9acc55;
+  text-decoration: none; }
+
 /*# sourceMappingURL=style.min.css.map */

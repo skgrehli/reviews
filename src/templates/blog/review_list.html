@@ -4,19 +4,44 @@
 {% block title %}Reviews{% endblock %}
 
 {% block content %}
+<div class="container col-sm-6">
+    {% for review in object_list %}
+    <div class="one-review">
+        
+            
+                <div>
+                <img width="100%" src="{{ review.product.thumb.url }}">
+                </div>
+                <div class="post-content">
+                    <a href="{{ review.slug }}"><h4>{{ review.title }}</h4></a>
+                    <p>Written by {{ review.author }} {{ review.date|date:"M d, Y" }} <a href="{{ review.slug }}">{{ review.product.name }}</a></p>
+                    <p>{{ review.body|truncatechars:200 }}</p>
+                    <a href="{{ review.slug }}"><button class="btn btn-success">Continue reading</button></a>    
+                </div>
+           
+        
+     </div>
+    {% endfor %}
+</div>
 
-<h1>All Reviews</h1>
+{% if is_paginated %}
+<div class="pagination">
+    <span class="page-links">
+        {% if page_obj.has_previous %}
+            <a href="/cars?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="page-current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+            <a href="/cars?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 
-<ul>
-{% for review in object_list %}
-    <li>
-        <img src="{{ review.product.thumb.url }}">
-        <a href="{{ review.slug }}">{{ review.title }}</a>
-        <p>{{ review.body }}</p>
-          <p>Written by {{ review.author }}--{{ review.date }}-{{ review.product.name }}</li>
-{% empty %}
-    <li>No reviews yet.</li>
-{% endfor %}
-</ul>
+{% else %}
+    <h3>My Cars</h3>
+    <p>No cars found!!! :(</p>
+{% endif %}
 
 {% endblock %}
