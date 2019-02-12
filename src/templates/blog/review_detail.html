@@ -4,62 +4,128 @@
 {% load ratings %}
 
 
-
-</html>
 {% block title %}Reviews{% endblock %}
 
-{% block content %}
 
-<h1>Reviews</h1>
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <h1>Reviews</h1>
 
-<h1>{{ object.title }}</h1>
-<img src="{{ object.product.thumb.url }}">
-<p>{{ object.body }}</p>
-<p>author: {{ object.author }}</p>
-<p>{% ratings object %}</p>
-<p>Published: {{ object.date|date }}</p>
-<p>Date: {{ now|date }}</p>
+        <h1>{{ object.title }}</h1>
+        <img class="img-fluid w-100" src="{{ object.product.thumb.url }}">
 
-<p>{% for p in object.rpros.all %}
-    {{p}}
-    {% endfor %}
-</p>
+        <ul id="toggler" class="nav nav-tabs" data-tabs="tabs">
+          <li><a id="analysis" class="btn btn-success" href="#analysis" data-toggle="tab">Analysis</a></li>
+          <li><a id="specification" class="btn btn-default" href="#specification" data-toggle="tab">Specification</a></li>
+        </ul>
 
-comfort <div class="progress" style="height:25px">
-        <div class="progress-bar" style="width:{{ object.comfort }}%;height:25px">{{ object.comfort }}%</div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="analysis-content">
+              <h1>analysis</h1>
+              <p>analysis</p>
+          </div>
+          <div class="tab-pane" id="specification-content">
+              <h1>specification</h1>
+              <p>specification</p>
+          </div>
+        </div>
+
+
+        <p>{{ object.body }}</p>
+
+
+
+
+        <p>author: {{ object.author }}</p>
+        <p>{% ratings object %}</p>
+        <p>Published: {{ object.date|date }}</p>
+        <p>Date: {{ now|date }}</p>
+
+        <p>{% for p in object.rpros.all %}
+            {{p}}
+            {% endfor %}
+        </p>
+
+        comfort <div class="progress" style="height:25px">
+                <div class="progress-bar" style="width:{{ object.comfort }}%;height:25px">{{ object.comfort }}%</div>
+              </div>
+
+        Price <div class="progress" style="height:25px">
+                    <div class="progress-bar" style="width:{{ object.price }}%;height:25px">{{ object.price }}%</div>
+                  </div>
+        availability <div class="progress" style="height:25px">
+                        <div class="progress-bar" style="width:{{ object.availability }}%;height:25px">{{ object.availability }}%</div>
+                      </div>
+        support <div class="progress" style="height:25px">
+                            <div class="progress-bar" style="width:{{ object.support }}%;height:25px">{{ object.support }}%</div>
+                          </div>
+        {% video object.video_url as my_video %}
+          <!-- URL: {{ my_video.url }}
+          Thumbnail: {{ my_video.thumbnail }}
+          Backend: {{ my_video.backend }} -->
+
+          {% video my_video '400x400' %}
+        {% endvideo %}
+
+        <h1>User Reviews</h1>
+        {% for r in user_reviews %}
+        <p>@{{ r.name }}-{{ r.email }}</p>
+        <p>{{ r.date }}</p>
+        <p>{{ r.comment }}</p>
+        <hr>
+        {% endfor %}
+        <hr>
+        <h1>Leave Review</h1>
+        <form method="post" action="{% url "my_form_view_url" %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="hidden" value="{{ key }}" name="rk">
+          <input type="submit" value="Send message">
+
+        </form>
       </div>
 
-Price <div class="progress" style="height:25px">
-            <div class="progress-bar" style="width:{{ object.price }}%;height:25px">{{ object.price }}%</div>
-          </div>  
-availability <div class="progress" style="height:25px">
-                <div class="progress-bar" style="width:{{ object.availability }}%;height:25px">{{ object.availability }}%</div>
-              </div>              
-support <div class="progress" style="height:25px">
-                    <div class="progress-bar" style="width:{{ object.support }}%;height:25px">{{ object.support }}%</div>
-                  </div>
-{% video object.video_url as my_video %}
-  <!-- URL: {{ my_video.url }}
-  Thumbnail: {{ my_video.thumbnail }}
-  Backend: {{ my_video.backend }} -->
 
-  {% video my_video '400x400' %}
-{% endvideo %}
 
-<h1>User Reviews</h1>
-{% for r in user_reviews %}
-<p>@{{ r.name }}-{{ r.email }}</p>
-<p>{{ r.date }}</p>
-<p>{{ r.comment }}</p>
-<hr>
-{% endfor %}
-<hr>
-<h1>Leave Review</h1>
-<form method="post" action="{% url "my_form_view_url" %}">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="hidden" value="{{ key }}" name="rk">
-        <input type="submit" value="Send message">
-        
-    </form>
+      <div class="col-sm-3">
+        <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
 
-{% endblock %}
+        <div class="card-body">
+          <span><img class="review-card__author-img--square mb-3"height="30px" width="30px" src="../../media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{object.author.username }}</span>
+          <ul class="sidebar-list">
+            <li><span class="side_key"></span><span class="side-value"></span></li>
+            <li><span class="side_key">Category:</span><span class="side-value">{{ object.product.subcategory.name }}</span></li>
+            <li><span class="side_key">User Ratings:</span><span class="side-value__stars"><span class="review-card__stars-user">{% ratings object %}</span></span></li>
+            <li><span class="side_key">Reviews:</span><span class="side-value">2</span></li>
+            <li><span class="side_key">Created:</span><span class="side-value">{{ object.date|timesince }} ago</span></li>
+          </ul>
+          <hr>
+            <div class="ml-auto mt-5"><span class="review-card__stars-user__label">Rate</span><br><span class="review-card__stars-user">{% ratings object %}</span></div>
+            <br>
+            <div>
+              <a href="#" title="{{ object.title }}" class="leading-category">
+                  <h5>{{ object.title|title }}</h5>
+              </a>
+            </div>
+            <p class="text-justify">{{ object.body|truncatechars:100 }}</p>
+            <span><img class="review-card__author-img" height="30px" width="30px" src="../../media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{object.author.username }}</span><span class="pull-right">{{object.product.subcategory.name}}</span>
+        </div>
+      </div>
+
+                    {% comment %} <span><img class="review-card__author-img" height="30px" width="30px" src="media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{r.author.username }}</span><span class="pull-right">{{r.product.subcategory.name}}</span> {% endcomment %}
+
+
+                    {% comment %} <h1>{{ object.title }}</h1>
+                    <img src="{{ object.product.thumb.url }}">
+                    <p>{{ object.body }}</p>
+                    <p>author: {{ object.author }}</p>
+                    <p>{% ratings object %}</p>
+                    <p>Published: {{ object.date|date }}</p> {% endcomment %}
+
+
+    </div>
+  </div>
+  {% endblock %}
+

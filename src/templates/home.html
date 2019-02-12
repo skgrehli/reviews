@@ -38,20 +38,20 @@
                                 <h5 class="text-center card-title category-card__title">{{ category.name }}</h5>
                                 <ul class="list-group list-group-flush">
                                     {% for obj in subcategories %}
-                                        {% if obj.category.name == category.name %} 
+                                        {% if obj.category.name == category.name %}
                                             <li class="list-group-item category-card__item">{{ obj.subcategory.name }}<span class="badge badge-pill badge-dark category-card__pill">1</span></li>
                                         {% endif %}
-                                    {% endfor %}    
+                                    {% endfor %}
                                 </ul>
                             </a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-                
+
             </div>
         </div>
-    
+
 
 
 
@@ -69,10 +69,9 @@
             <div class="col-md-4">
                 <div class="card review-card">
                     <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
-                    
+
                     <div class="card-body">
-                            
-                        <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+                        <span class="review-card__stars-user__label">Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
                         <a href="#" title="{{ r.title }}" class="leading-category">
                             <h5 class="">{{ r.title|title }}</h5>
                         </a>
@@ -95,10 +94,10 @@
 <div class="col-md-4">
         <div class="card review-card">
             <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
-            
+
             <div class="card-body">
-                    
-                <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+
+                <span class="review-card__stars-user__label">Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
                 <a href="#" title="{{ r.title }}" class="leading-category">
                     <h5 class="">{{ r.title|title }}</h5>
                 </a>
@@ -120,10 +119,10 @@
 <div class="col-md-4">
         <div class="card review-card">
             <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
-            
+
             <div class="card-body">
-                    
-                <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+
+                <span class="review-card__stars-user__label">Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
                 <a href="#" title="{{ r.title }}" class="leading-category">
                     <h5 class="">{{ r.title|title }}</h5>
                 </a>

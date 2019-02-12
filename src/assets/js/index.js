@@ -15,3 +15,25 @@ $('ul.navbar-nav li.dropdown').hover(
       .fadeOut(500);
   }
 );
+
+// Toggler details / specification
+$('a#analysis').click(function() {
+  $(this)
+    .removeClass('btn-default')
+    .addClass('btn-success');
+  $('a#specification')
+    .removeClass('btn-success')
+    .addClass('btn-default');
+  $('#analysis-content').addClass('active');
+  $('#specification-content').removeClass('active');
+});
+$('a#specification').click(function() {
+  $(this)
+    .removeClass('btn-default')
+    .addClass('btn-success');
+  $('a#analysis')
+    .removeClass('btn-success')
+    .addClass('btn-default');
+  $('#specification-content').addClass('active');
+  $('#analysis-content').removeClass('active');
+});

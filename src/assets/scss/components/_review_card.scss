@@ -8,6 +8,9 @@
 
   &__author-img {
     border-radius: 50%;
+    &--square {
+      border-radius: 0;
+    }
   }
 
   &__img-thumbnail {
@@ -30,10 +33,10 @@
   }
 
   &__stars-user__label {
-    text-align: right;
+    float: right;
     font-size: $font-size-sm;
     padding-bottom: -10px;
-    padding-right: 21px;
+    padding-right: 17px;
   }
 
   &__stars-user div {
