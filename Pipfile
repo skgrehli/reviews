@@ -12,6 +12,7 @@ pylint = "*"
 django = "*"
 pillow = "*"
 django-embed-video = "*"
+django-star-ratings = "*"
 
 [requires]
 python_version = "3.7"

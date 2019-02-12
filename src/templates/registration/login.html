@@ -3,10 +3,29 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
+  
+  <!-- <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Login</button>
-  </form>
+  </form> -->
+<div class="container col-sm-6">
+    <h2 class="heading">Login</h2>
+    <form role="form" class="form-horizontal" method="post">{% csrf_token %}
+        <div class="form-group">
+            {% for field in form %}
+                <div class="form-group">
+                    <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+                    <label>{{ field.html_name }}</label>
+                    <input class="form-control myinput" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}"  type="text" /> 
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            <input type="submit" class="btn btn-success" value="login" />
+            
+        </div>
+    </form>
+  
+</div>
+  
 {% endblock %}
