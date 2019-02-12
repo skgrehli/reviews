@@ -7,14 +7,15 @@
 
 
 
-<div class="container col-sm-10 search-form">
-<form method="post" action="{% url "search" %}">
+<div class="container mt-5">
+<div class="row category-list">
+<form method="post" style="width:100%;" action="{% url "search" %}">
  {% csrf_token %}
-<div class="col-sm-3 search-box">
+<div class="col-md-4 search-box">
         <label>Filter by Keyword</label>
         <input class="form-control myinput" type="text" placeholder="Type term and hit enter" name="keyword"/>
 </div>
-<div class="col-sm-3 search-box">
+<div class="col-md-4 search-box">
         <label>Filter by Category</label>
         <select class="form-control" name="selected_category">
             <option value="all">All Categories</option>
@@ -23,7 +24,7 @@
             {% endfor %}
         </select>
 </div> 
-<div class="col-sm-3 search-box">
+<div class="col-md-3 search-box">
         <label>Sort Reviews</label>
         <select class="form-control " name="sortby">
             <option value="-date">Latest</option>
@@ -34,22 +35,37 @@
         </select>
     
 </div>  
-<div class="col-sm-3 search-box">
+<div class="col-md-1 search-box">
         <label>Search</label><br>
         <input class="btn btn-success" type="submit" value="Search">
     </div>
 </form> 
 </div>
-
-
-<div class="col-sm-8">
-
-<h3>Latest Reviews</h3>
-<p>Our authors have released some new reviews</p>
-{% for r in reviews %}
-<a href="/blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
-{% endfor %}
-
 </div>
+
+
+
+<div class="container mt-5">
+                <div class="row category-list">
+{% for r in reviews %}
+<div class="col-md-4">
+                <div class="card review-card">
+                    <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
+                    
+                    <div class="card-body">
+                            
+                        <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+                        <a href="#" title="{{ r.title }}" class="leading-category">
+                            <h5 class="">{{ r.title|title }}</h5>
+                        </a>
+                        <p class="text-justify">{{ r.body|truncatechars:100 }}</p>
+                        <span><img class="review-card__author-img" height="30px" width="30px" src="/media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{r.author.username }}</span><span class="pull-right">{{r.product.subcategory.name}}</span>
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+</div>
+</div>
+
 
 {% endblock %}

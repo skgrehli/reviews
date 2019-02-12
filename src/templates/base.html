@@ -29,7 +29,7 @@
 
 <body>
     {% comment %} LOGIN-TOPBAR {% endcomment %}
-    <nav class="navbar navbar-expand-md fixed-top navbar--login-topbar">
+    <nav class="navbar navbar-expand-md navbar--login-topbar">
         <div class="container">
         {% if user.is_authenticated %}
             <span>Hi {{ user.username }}!</span>
@@ -55,21 +55,21 @@
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav ml-auto">
                     <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Home <i class="fa fa-angle-down" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
+                        <a href="/" class="dropdown-toggle nav-link" data-toggle="dropdown">Home <i class="fa fa-angle-down" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="#">Top Categories</a></li>
+                            <li class="dropdown-item"><a href="/">Top Categories</a></li>
                             <div class="dropdown-divider"></div>
                             <li class="dropdown-item"><a href="#">Latest Reviews</a></li>
                         </ul>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Search</a>
+                        <a class="nav-link" href="{% url 'search' %}">Search</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Blogs</a>
+                        <a class="nav-link" href="{% url 'all_reviews' %}">Blogs</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">All Categories</a>
+                        <a class="nav-link" href="{% url 'all_categories' %}">All Categories</a>
                     </li>
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Shortcodes <i class="fa fa-angle-down" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
@@ -96,23 +96,9 @@
         </div>
     </nav>
 
-    {% comment %} SEARCH FORM {% endcomment %}
-    <div class="hero">
-        <div class="hero__centered-container col-12 col-sm-9 col-md-8 col-lg-6">
-            <div class="hero__headlines-group mb-5 text-center">
-                <h1>Search Products and Services</h1>
-                <h4>Quickly find product or service of your interest</h2>
-            </div>
-            <form class="input-group">
-                <div class="form-input__search mx-sm-1 mb-2">
-                    <input type="text" class="form-control form-control--white-border" id="search">
-                </div>
-                <button type="submit" class="btn btn-success mb-2">Search</button>
-            </form>
-        </div>
-    </div>
+    
 
-    <div class="rate">
+    {% comment %} <div class="rate">
         <div class="rate__owner">AUTHOR RATE</div>
         <div class="rate__stars">
             <i class="fa fa-star rate__star--fill"></i>
@@ -121,75 +107,35 @@
             <i class="fa fa-star rate__star--fill"></i>
             <i class="fa fa-star rate__star--empty"></i>
         </div>
-    </div>
+    </div> {% endcomment %}
 
-    <div class="container mt-5">
-        {% comment %} Categories cards {% endcomment %}
-        <div class="row category-list">
-            <div class="col-md-4">
-                <div class="card category-card">
-                    <div class="card-body">
-                        <a href="#" title="Computers &amp; Computers" class="leading-category">
-                            <div class="category-card__triangle"></div>
-                            <i class="fa fa-desktop category-card__icon"></i>
-                            <h5 class="card-title category-card__title">Computers &amp; Computers</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item category-card__item">Car Players <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">Cell Phone Plans <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">External Hard Drives <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">Laptops <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">LCD TV <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                            </ul>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card category-card">
-                    <div class="card-body">
-                        <a href="#" title="Computers &amp; Computers" class="leading-category">
-                            <div class="category-card__triangle"></div>
-                            <i class="fa fa-desktop category-card__icon"></i>
-                            <h5 class="card-title category-card__title">Computers &amp; Computers</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item category-card__item">Car Players <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">Cell Phone Plans <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">External Hard Drives <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">Laptops <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">LCD TV <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                            </ul>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card category-card">
-                    <div class="card-body">
-                        <a href="#" title="Computers &amp; Computers" class="leading-category">
-                            <div class="category-card__triangle"></div>
-                            <i class="fa fa-desktop category-card__icon"></i>
-                            <h5 class="card-title category-card__title">Computers &amp; Computers</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item category-card__item">Car Players <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">Cell Phone Plans <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">External Hard Drives <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">Laptops <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                                <li class="list-group-item category-card__item">LCD TV <span class="badge badge-pill badge-dark category-card__pill">1</span></li>
-                            </ul>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     {% block content %}
     {% endblock content %}
 
+    <footer class="footer">
+        <div class="container h-100">
+
+            <div class="row align-items-center h-100">
+                <div class="col-sm-6">
+                    &copy; Developed by Web Engineers
+                </div>
+                <div class="col-sm-6 text-right footer__social-media-icons">
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 {% block scripts %}
 <script src="{% static 'js/main.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-    
+
 {% endblock scripts %}
 
 </body>

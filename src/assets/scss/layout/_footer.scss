@@ -1,3 +1,16 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
+.footer {
+  color: $white;
+  background-color: darken($secondary, 30%);
+  height: 65px;
+
+  a {
+    color: $white;
+  }
+
+  &__social-media-icons a {
+    padding-left: 10px;
+  }
+}

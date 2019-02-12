@@ -1,45 +1,139 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
+{% load static %}
 {% load ratings %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
 
-<h1>Home</h1>
+{% comment %} SEARCH FORM {% endcomment %}
+    <div class="hero">
+        <div class="hero__centered-container col-12 col-sm-9 col-md-8 col-lg-6">
+            <div class="hero__headlines-group mb-5 text-center">
+                <h1>Search Products and Services</h1>
+                <h4>Quickly find product or service of your interest</h2>
+            </div>
+            <form class="input-group">
+                <div class="form-input__search mx-sm-1 mb-2">
+                    <input type="text" class="form-control form-control--white-border" id="search">
+                </div>
+                <button type="submit" class="btn btn-success mb-2">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+    <h3>Categories</h3>
+    <p>Choose category to start browsing products and services</p>
+    </div>
+    <div class="container mt-5">
+            {% comment %} Categories cards {% endcomment %}
+            <div class="row category-list">
+                {% for category in categories %}
+                <div class="col-md-4 mt-5">
+                    <div class="card category-card">
+                        <div class="card-body">
+                            <a href="#" title="Computers &amp; Computers" class="leading-category">
+                                <div class="category-card__triangle"></div>
+                                <i class="fa fa-desktop category-card__icon"></i>
+                                <h5 class="text-center card-title category-card__title">{{ category.name }}</h5>
+                                <ul class="list-group list-group-flush">
+                                    {% for obj in subcategories %}
+                                        {% if obj.category.name == category.name %} 
+                                            <li class="list-group-item category-card__item">{{ obj.subcategory.name }}<span class="badge badge-pill badge-dark category-card__pill">1</span></li>
+                                        {% endif %}
+                                    {% endfor %}    
+                                </ul>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    
 
-<h3>Categories</h3>
-<p>Choose category to start browsing products and services</p>
-<ul>
-    {% for category in categories %}
-    <li>{{ category.name }}</li>
-    <ul>{% for obj in subcategories %}
-        {% if obj.category.name == category.name %}
-        <li>{{ obj.subcategory.name }}</li>
-        {% endif %}
-        {% empty %}
-        <li>no item</li>
-        {% endfor %}
-    </ul>
-    {% endfor %}
-</ul>
 
 
+<div class="text-center mt-5">
 <h3>Latest Reviews</h3>
 <p>Our authors have released some new reviews</p>
-{% for r in reviews %}
+</div>
+{% comment %} {% for r in reviews %}
 <a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
-{% endfor %}
+{% endfor %} {% endcomment %}
 
+<div class="container">
+    <div class="row category-list">
+        {% for r in reviews %}
+            <div class="col-md-4">
+                <div class="card review-card">
+                    <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
+                    
+                    <div class="card-body">
+                            
+                        <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+                        <a href="#" title="{{ r.title }}" class="leading-category">
+                            <h5 class="">{{ r.title|title }}</h5>
+                        </a>
+                        <p class="text-justify">{{ r.body|truncatechars:100 }}</p>
+                        <span><img class="review-card__author-img" height="30px" width="30px" src="media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{r.author.username }}</span><span class="pull-right">{{r.product.subcategory.name}}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+<div class="text-center mt-5">
 <h3>Most Reviewed</h3>
 <p>Most Reviewed by users</p>
+</div>
+<div class="container">
+        <div class="row category-list">
 {% for r in reviews_by_views %}
-<a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
+<div class="col-md-4">
+        <div class="card review-card">
+            <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
+            
+            <div class="card-body">
+                    
+                <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+                <a href="#" title="{{ r.title }}" class="leading-category">
+                    <h5 class="">{{ r.title|title }}</h5>
+                </a>
+                <p class="text-justify">{{ r.body|truncatechars:100 }}</p>
+                <span><img class="review-card__author-img" height="30px" width="30px" src="media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{r.author.username }}</span><span class="pull-right">{{r.product.subcategory.name}}</span>
+            </div>
+        </div>
+    </div>
 {% endfor %}
-
+</div>
+</div>
+<div class="text-center mt-5">
 <h3>Author's Picks</h3>
 <p>These products and services are top rated by our authors</p>
+</div>
+<div class="container">
+        <div class="row category-list">
 {% for r in reviews_by_rating %}
-<a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
+<div class="col-md-4">
+        <div class="card review-card">
+            <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
+            
+            <div class="card-body">
+                    
+                <span>Author rate</span><br><span class="review-card__stars-user">{% ratings r %}</span>
+                <a href="#" title="{{ r.title }}" class="leading-category">
+                    <h5 class="">{{ r.title|title }}</h5>
+                </a>
+                <p class="text-justify">{{ r.body|truncatechars:100 }}</p>
+                <span><img class="review-card__author-img" height="30px" width="30px" src="media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{r.author.username }}</span><span class="pull-right">{{r.product.subcategory.name}}</span>
+            </div>
+        </div>
+    </div>
 {% endfor %}
-
+</div>
+</div>
 {% endblock %}
+
