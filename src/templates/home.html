@@ -58,10 +58,7 @@
 <div class="text-center mt-5">
 <h3>Latest Reviews</h3>
 <p>Our authors have released some new reviews</p>
-<<<<<<< HEAD
 </div>
-=======
->>>>>>> 28fc1d932feacc2f52147a33a7923a3bb0085822
 {% comment %} {% for r in reviews %}
 <a href="blog/{{r.slug}}"><img src="{{r.product.thumb.url}}" height="100px">{{ r.title }}<p>{% ratings r %}</p></a>
 {% endfor %} {% endcomment %}
@@ -71,7 +68,6 @@
         {% for r in reviews %}
             <div class="col-md-4">
                 <div class="card review-card">
-<<<<<<< HEAD
                     <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
                     
                     <div class="card-body">
@@ -82,27 +78,10 @@
                         </a>
                         <p class="text-justify">{{ r.body|truncatechars:100 }}</p>
                         <span><img class="review-card__author-img" height="30px" width="30px" src="media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{r.author.username }}</span><span class="pull-right">{{r.product.subcategory.name}}</span>
-=======
-                    <img src="{{r.product.thumb.url}}" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
-                    <span class="review-card__stars-user__label text-right">USERS RATE</span>
-                    <span class="review-card__stars-user">{% ratings r %}</span>
-                    <div class="card-body">
-                            <a href="#" title="{{ r.title }}" class="leading-category">
-                                <h5 class="category-card__title">{{ r.title|title }}</h5>
-                            </a>
-                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime odit qui quibusdam deserunt rem recusandae ducimus alias dolorem excepturi libero illo quaerat totam quos aut distinctio, ullam perspiciatis est consequuntur molestiae hic optio. Doloribus odit totam esse maiores adipisci odio.</p>
-                            <span><img class="review-card__author-img" src="{% static 'img/sally-doe-25x25.jpg' %}">&nbsp;&nbsp;By Sally Doe</span><span class="pull-right">{{r.product.subcategory.name}}</span>
->>>>>>> 28fc1d932feacc2f52147a33a7923a3bb0085822
                     </div>
                 </div>
             </div>
         {% endfor %}
-<<<<<<< HEAD
-=======
-
-    </div>
-</div>
->>>>>>> 28fc1d932feacc2f52147a33a7923a3bb0085822
 
     </div>
 </div>
