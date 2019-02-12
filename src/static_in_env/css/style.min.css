@@ -10130,6 +10130,59 @@ body {
 .category-card__title {
   margin-left: 24px; }
 
+.review-card {
+  color: #676767; }
+
+.review-card a {
+  color: #676767;
+  text-decoration: none; }
+
+.review-card__author-img {
+  border-radius: 50%; }
+
+.review-card__img-thumbnail {
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* Do not scale the image */
+  -o-object-position: center;
+     object-position: center;
+  /* Center the image within the element */
+  height: 180px;
+  margin-bottom: 10px; }
+
+@media (min-width: 576px) {
+  .review-card__img-thumbnail {
+    min-height: 240px; } }
+
+@media (min-width: 768px) {
+  .review-card__img-thumbnail {
+    min-height: 180px; } }
+
+@media (min-width: 992px) {
+  .review-card__img-thumbnail {
+    min-height: 200px; } }
+
+.review-card__stars-user__label {
+  text-align: right;
+  font-size: 0.77rem;
+  padding-bottom: -10px;
+  padding-right: 21px; }
+
+.review-card__stars-user div {
+  border-color: blue;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  float: right;
+  padding-top: 0;
+  line-height: 0; }
+
+.card-body {
+  font-size: 0.77rem;
+  padding: 0.7rem; }
+
+.card-body h5 {
+  margin-left: 0; }
+
 .hero {
   background-color: #000;
   height: 500px;
