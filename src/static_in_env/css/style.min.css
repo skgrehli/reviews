@@ -10064,6 +10064,10 @@ body {
 .btn-success:hover {
   color: white; }
 
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: white; }
+
 .rate {
   font-size: 0.77rem; }
 

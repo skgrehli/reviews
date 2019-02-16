@@ -6,84 +6,124 @@
 
 {% block title %}Reviews{% endblock %}
 
-
   {% block content %}
   <div class="container">
-    <div class="row">
+    <div class="row mt-5">
       <div class="col-sm-9">
-        <h1>Reviews</h1>
+        <img class="img-fluid w-100 mb-5" src="{{ object.product.thumb.url }}">
 
-        <h1>{{ object.title }}</h1>
-        <img class="img-fluid w-100" src="{{ object.product.thumb.url }}">
-
-        <ul id="toggler" class="nav nav-tabs" data-tabs="tabs">
+        <ul id="toggler" class="nav nav-tabs mb-4" data-tabs="tabs">
           <li><a id="analysis" class="btn btn-success" href="#analysis" data-toggle="tab">Analysis</a></li>
           <li><a id="specification" class="btn btn-default" href="#specification" data-toggle="tab">Specification</a></li>
         </ul>
 
-        <div class="tab-content">
+        <div class="tab-content small">
           <div class="tab-pane active" id="analysis-content">
-              <h1>analysis</h1>
-              <p>analysis</p>
+              <h1 class="mb-3">{{ object.title|title }}</h1>
+              {{object.body|safe}}
           </div>
           <div class="tab-pane" id="specification-content">
-              <h1>specification</h1>
-              <p>specification</p>
+              <h1 class="mb-3">Specification</h1>
+              {{ object.specs|safe }}
           </div>
         </div>
-
-
-        <p>{{ object.body }}</p>
-
-
-
-
+        <br>
         <p>author: {{ object.author }}</p>
         <p>{% ratings object %}</p>
         <p>Published: {{ object.date|date }}</p>
         <p>Date: {{ now|date }}</p>
 
-        <p>{% for p in object.rpros.all %}
-            {{p}}
-            {% endfor %}
-        </p>
+        <div class="row">
+          <div class="col-sm-6">
+            <p>{% for p in object.rpros.all %}
+                {{p}}
+                {% endfor %}
+            </p>
+          </div>
 
-        comfort <div class="progress" style="height:25px">
-                <div class="progress-bar" style="width:{{ object.comfort }}%;height:25px">{{ object.comfort }}%</div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-6 mb-0">
+            {% video object.video_url as my_video %}
+            <!-- URL: {{ my_video.url }}
+            Thumbnail: {{ my_video.thumbnail }}
+            Backend: {{ my_video.backend }} -->
+              {% video my_video '400x400' %}
+            {% endvideo %}
+          </div>
+          <div class="col-xl-6 d-flex flex-column my-flex-container-column ">
+            <div class="bar-group my-flex-item">
+              <p class="mb-1">comfort</p>
+              <div class="progress" style="height:25px">
+                <div class="progress-bar" style="width:{{ object.comfort }}%;height:25px">{{ object.comfort }}%
+                </div>
               </div>
+            </div>
 
-        Price <div class="progress" style="height:25px">
-                    <div class="progress-bar" style="width:{{ object.price }}%;height:25px">{{ object.price }}%</div>
-                  </div>
-        availability <div class="progress" style="height:25px">
-                        <div class="progress-bar" style="width:{{ object.availability }}%;height:25px">{{ object.availability }}%</div>
-                      </div>
-        support <div class="progress" style="height:25px">
-                            <div class="progress-bar" style="width:{{ object.support }}%;height:25px">{{ object.support }}%</div>
-                          </div>
-        {% video object.video_url as my_video %}
-          <!-- URL: {{ my_video.url }}
-          Thumbnail: {{ my_video.thumbnail }}
-          Backend: {{ my_video.backend }} -->
+            <div class="bar-group my-flex-item">
+              <p class="mb-1">price</p>
+              <div class="progress" style="height:25px">
+                <div class="progress-bar" style="width:{{ object.price }}%;height:25px">{{ object.price }}%
+                </div>
+              </div>
+            </div>
 
-          {% video my_video '400x400' %}
-        {% endvideo %}
+            <div class="bar-group my-flex-item">
+              <p class="mb-1">availability</p>
+              <div class="progress" style="height:25px">
+                <div class="progress-bar" style="width:{{ object.availability }}%;height:25px">{{ object.availability }}%
+                </div>
+              </div>
+            </div>
 
-        <h1>User Reviews</h1>
+            <div class="bar-group my-flex-item mb-4">
+              <p class="mb-1">support</p>
+              <div class="progress" style="height:25px">
+                <div class="progress-bar" style="width:{{ object.support }}%;height:25px">{{ object.support }}%
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <section id="category">
+          <i class="fa fa-tags"></i>&nbsp;<span class="side-value">{{ object.product.subcategory.name }}</span>
+        </section>
+
+
+        <section id="pros_and_cons" class="mt-5 mb-5">
+          <h2>Pros and Cons</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              {% for pro in object.rpros.all %}
+                <i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;<span>{{ pro }}</span>
+              {% endfor %}
+            </div>
+            <div class="col-sm-6">
+              {% for pro in object.rcons.all %}
+                <i class="fa fa-minus-square-o"></i>&nbsp;&nbsp;<span>{{ pro }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+
+
+        <h3>User Reviews</h3>
         {% for r in user_reviews %}
-        <p>@{{ r.name }}-{{ r.email }}</p>
-        <p>{{ r.date }}</p>
+        <p class="mb-0">@{{ r.name }}</p>
+        <p class="small">{{ r.date }}</p>
         <p>{{ r.comment }}</p>
         <hr>
         {% endfor %}
         <hr>
-        <h1>Leave Review</h1>
+        <h2>Leave Review</h2>
         <form method="post" action="{% url "my_form_view_url" %}">
           {% csrf_token %}
           {{ form.as_p }}
           <input type="hidden" value="{{ key }}" name="rk">
           <input type="submit" value="Send message">
-
         </form>
       </div>
 

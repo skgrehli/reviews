@@ -27,11 +27,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Custom apps
     'accounts',
     'blog',
-    #for youtube videos
+
+    # 3rd party
+    'ckeditor',
     'embed_video',
-    #for ratings
     'star_ratings',
 ]
 
@@ -126,3 +129,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STAR_RATINGS_STAR_HEIGHT = 15
 STAR_RATINGS_STAR_WIDTH = 15
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source'],
+            ['Styles', 'Format', 'Font', 'FontSize', 'Table'],
+        ]
+    }
+}

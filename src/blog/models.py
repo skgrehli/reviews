@@ -4,6 +4,7 @@ from django.core.validators import URLValidator
 from embed_video.fields import EmbedVideoField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from star_ratings.models import Rating
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -50,7 +51,8 @@ class Cons(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField()
-    body = models.TextField()
+    body = RichTextField(blank=True, null=True)
+    specs = RichTextField(blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
