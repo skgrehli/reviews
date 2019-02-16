@@ -10087,6 +10087,21 @@ body {
 .form-control--white-border:focus {
   background-color: transparent; }
 
+.form-control--plain {
+  background-clip: unset; }
+
+.form-control--plain::-webkit-input-placeholder {
+  color: #999999; }
+
+.form-control--plain:-ms-input-placeholder {
+  color: #999999; }
+
+.form-control--plain::-ms-input-placeholder {
+  color: #999999; }
+
+.form-control--plain::placeholder {
+  color: #999999; }
+
 .form-input__search {
   min-width: 220px;
   flex: 1; }

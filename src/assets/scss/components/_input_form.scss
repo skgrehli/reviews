@@ -18,6 +18,13 @@
   }
 }
 
+.form-control--plain {
+  background-clip: unset;
+  &::placeholder {
+    color: $mid-grey;
+  }
+}
+
 .form-input__search {
   min-width: 220px;
   flex: 1;

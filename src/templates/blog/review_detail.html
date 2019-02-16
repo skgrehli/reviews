@@ -9,7 +9,7 @@
   {% block content %}
   <div class="container">
     <div class="row mt-5">
-      <div class="col-sm-9">
+      <div class="col-sm-9 mb-5">
         <img class="img-fluid w-100 mb-5" src="{{ object.product.thumb.url }}">
 
         <ul id="toggler" class="nav nav-tabs mb-4" data-tabs="tabs">
@@ -112,25 +112,70 @@
 
         <h3>User Reviews</h3>
         {% for r in user_reviews %}
-        <p class="mb-0">@{{ r.name }}</p>
-        <p class="small">{{ r.date }}</p>
-        <p>{{ r.comment }}</p>
-        <hr>
+
+          <p class="mb-0"><span><img class="review-card__author-img--square mb-3"height="30px" width="30px" src="../../media/sally-doe-25x25.jpg"></span>&nbsp;&nbsp; @{{ r.name }}</p>
+          <p class="small">{{ r.date }}</p>
+          <p>{{ r.comment }}</p>
         {% endfor %}
         <hr>
-        <h2>Leave Review</h2>
+        <h3>Leave Review</h3>
         <form method="post" action="{% url "my_form_view_url" %}">
           {% csrf_token %}
-          {{ form.as_p }}
+          {% comment %} {{ form.as_p }} {% endcomment %}
+          {{ form.non_field_errors }}
+
+          <span class="side-value__stars"><span class="review-card__stars-user">{% ratings object %}</span>
+
+          <div class="form-group">
+            {{ form.comment.errors }}
+            <label class="small" for="{{ form.comment.id_for_label }}">{{ form.comment.label_tag }}</label>
+            {% comment %} {{ form.comment }} {% endcomment %}
+            <textarea type="text"
+              rows="10"
+              class="form-control form-control--plain {% if form.comment.errors %}is-invalid{% endif %}"
+              id="id_comment"
+              name="comment"
+              placeholder="Your review"
+              value="{{ form.comment.value|default:"" }}"></textarea>
+          </div>
+
+          <div class="form-group">
+            {{ form.name.errors }}
+            <label class="small" for="{{ form.name.id_for_label }}">{{ form.name.label_tag }}</label>
+            {% comment %} {{ form.name }} {% endcomment %}
+            <input type="text"
+              class="form-control form-control--plain {% if form.email.errors %}is-invalid{% endif %}"
+              id="id_name"
+              name="name"
+              placeholder="Your name"
+              value="{{ form.name.value|default:"" }}">
+          </div>
+
+          <div class="form-group">
+            {{ form.email.errors }}
+            <label class="small" for="{{ form.email.id_for_label }}">{{ form.email.label_tag }}</label>
+            {% comment %} {{ form.email }} {% endcomment %}
+            <input type="email"
+              class="form-control form-control--plain {% if form.email.errors %}is-invalid{% endif %}"
+              id="id_email"
+              name="email"
+              placeholder="Your email"
+              value="{{ form.email.value|default:"" }}">
+            {% if form.email.errors %}
+              <div class="invalid-feedback">
+                {{ form.email.errors }}
+              </div>
+            {% endif %}
+          </div>
+
           <input type="hidden" value="{{ key }}" name="rk">
-          <input type="submit" value="Send message">
+          <input class="btn btn-success" type="submit" value="Send Review">
         </form>
       </div>
 
 
 
       <div class="col-sm-3">
-        <img src="{{r.product.thumb.url}}" style="min-height: 194px;" class="card-img-top review-card__img-thumbnail" alt="{{ r.title }}">
 
         <div class="card-body">
           <span><img class="review-card__author-img--square mb-3"height="30px" width="30px" src="../../media/sally-doe-25x25.jpg">&nbsp;&nbsp;By {{object.author.username }}</span>
